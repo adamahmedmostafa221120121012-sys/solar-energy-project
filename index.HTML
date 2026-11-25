@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>مشروع الطاقة الشمسية</title>
+    <link rel="stylesheet" href="TEST9.CSS">
+</head>
+<body>
+
+    <!-- رأس الصفحة -->
+    <header>
+        <h1>طاقة نظيفة.. لمستقبل أفضل ☀️</h1>
+        <p>مشروع توعوي عن أهمية الطاقة الشمسية وأضرار الطاقة الأحفورية</p>
+    </header>
+
+    <!-- قسم فوائد الطاقة الشمسية -->
+    <section class="card">
+        <h2>لماذا الطاقة الشمسية؟</h2>
+        <ul>
+            <li>طاقة متجددة لا تنفذ أبداً.</li>
+            <li>نظيفة ولا تلوث البيئة أو تسبب احتباس حراري.</li>
+            <li>مجانية تماماً بمجرد تركيب الألواح.</li>
+        </ul>
+    </section>
+
+    <!-- قسم أضرار الطاقة الأحفورية -->
+    <section class="card warning">
+        <h2>أضرار الطاقة الأحفورية (الفحم والبترول)</h2>
+        <ul>
+            <li>تخرج غازات سامة تلوث الهواء الذي نتنفسه.</li>
+            <li>تساهم بشكل رئيسي في تغير المناخ وارتفاع درجات حرارة الأرض.</li>
+            <li>مصادر غير متجددة ومعرضة للنفاد قريباً.</li>
+        </ul>
+    </section>
+
+    <!-- قسم الشرح التفصيلي مع الزرار -->
+    <section class="card">
+        <h2>كيف تعمل ألواح الطاقة الشمسية؟ ☀️</h2>
+        <p>اضغط على الزرار أدناه لمعرفة تفاصيل عمل الألواح وكيف تتحول أشعة الشمس إلى كهرباء:</p>
+        
+        <!-- زرار التفعيل -->
+        <button onclick="toggleExplanation()" class="toggle-btn">عرض الشرح التفصيلي</button>
+
+        <!-- الشرح (مخفي في البداية وهيظهر لما تدوس) -->
+        <div id="explanationText" class="hidden-text">
+            <p>1. تتكون الألواح الشمسية من خلايا ضوئية مصنوعة من مواد شبه موصلة مثل السيليكون.</p>
+            <p>2. عندما تسقط أشعة الشمس على هذه الخلايا، فإنها تمتص فوتونات الضوء.</p>
+            <p>3. هذا الامتصاص يؤدي إلى تحرير الإلكترونات وتوليد تدفق للتيار الكهربائي.</p>
+            <p>4. ينتج عن هذه العملية تيار كهربائي مستمر (DC).</p>
+            <p>5. يتم تمرير هذا التيار عبر جهاز يسمى العاكس (Inverter) لتحويله إلى تيار متناوب (AC).</p>
+            <p>6. يصبح التيار المتردد جاهزاً لتشغيل الأجهزة المنزلية وإنارة المنازل بكفاءة.</p>
+            <p>7. تُعد هذه العملية نظيفة تماماً ولا تنتج أي انبعاثات ضارة للبيئة.</p>
+        </div>
+    </section>
+
+    <!-- قسم حاسبة انبعاثات الكربون -->
+    <section class="card carbon-box">
+        <h2>حاسبة تلوث عوادم السيارات 🚗💨</h2>
+        <p>اكتب عدد السيارات وشوف كمية غاز ثاني أكسيد الكربون الضار اللي بيتصاعد في الهوا، واللي نقدر نمنعه باستخدام الطاقة النظيفة:</p>
+        
+        <div class="calc-input-group">
+            <label for="carCount">عدد السيارات:</label>
+            <input type="number" id="carCount" value="1" min="1" oninput="calculateCarbon()">
+        </div>
+
+        <div class="calc-results">
+            <div class="result-item">
+                <span>في الدقيقة الواحدة:</span>
+                <strong id="perMinute">77 جرام</strong>
+            </div>
+            <div class="result-item">
+                <span>في الساعة الواحدة:</span>
+                <strong id="perHour">4.6 كيلو جرام</strong>
+            </div>
+        </div>
+
+        <p class="eco-note">🌱 باستخدام الطاقة الشمسية والسيارات الكهربائية، بنمنع كل الكمية دي من إنها تلوث سمانا!</p>
+    </section>
+
+    <!-- كود JavaScript للزرار والحاسبة -->
+    <script>
+        function toggleExplanation() {
+            var box = document.getElementById("explanationText");
+            if (box.style.display === "block") {
+                box.style.display = "none";
+            } else {
+                box.style.display = "block";
+            }
+        }
+
+        function calculateCarbon() {
+            var cars = document.getElementById("carCount").value;
+            if (cars < 0 || cars === "") cars = 0;
+
+            var minuteCarbon = (cars * 77).toLocaleString();
+            var hourCarbon = (cars * 4.6).toFixed(1);
+
+            document.getElementById("perMinute").innerText = minuteCarbon + " جرام";
+            document.getElementById("perHour").innerText = hourCarbon + " كيلو جرام";
+        }
+    </script>
+
+    <!-- 1. واجهة تسجيل الدخول (طالب / معلم) -->
+    <div id="loginOverlay" style="position: fixed; inset: 0; background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 9999; font-family: 'Cairo', sans-serif; direction: rtl;">
+      <div style="background: #ffffff; padding: 28px; border-radius: 16px; width: 92%; max-width: 420px; text-align: center; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25);">
+        <div style="font-size: 40px; margin-bottom: 8px;">☀️</div>
+        <h2 style="margin: 0 0 6px; color: #0f172a;">تسجيل الدخول</h2>
+        <p style="margin: 0 0 16px; color: #64748b; font-size: 14px;">اختر نوع الدخول: طالب أو معلم</p>
+
+        <!-- أزرار التبديل بين طالب ومعلم -->
+        <div style="display: flex; gap: 8px; margin-bottom: 18px; background: #f1f5f9; padding: 5px; border-radius: 10px;">
+          <button type="button" id="tabStudentBtn" style="flex: 1; padding: 9px; border: none; border-radius: 8px; background: #16a34a; color: #fff; font-weight: bold; cursor: pointer; font-size: 14px;">
+            🎓 دخول كطالب
+          </button>
+          <button type="button" id="tabTeacherBtn" style="flex: 1; padding: 9px; border: none; border-radius: 8px; background: transparent; color: #334155; font-weight: bold; cursor: pointer; font-size: 14px;">
+            🛠️ دخول كمعلم
+          </button>
+        </div>
+
+        <!-- نموذج دخول الطالب -->
+        <div id="studentLoginForm">
+          <input type="text" id="studentNameInput" placeholder="الاسم ثلاثي (مثال: أحمد محمد علي)..." style="width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 15px; box-sizing: border-box;">
+          <input type="text" id="studentClassInput" placeholder="الصف / الفصل (مثال: 2/1)" style="width: 100%; padding: 12px; margin-bottom: 16px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 15px; box-sizing: border-box;">
+          <button id="loginBtn" style="width: 100%; padding: 12px; background: #16a34a; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer;">
+            ابدأ التعلم 🚀
+          </button>
+        </div>
+
+        <!-- نموذج دخول المعلم -->
+        <div id="teacherLoginForm" style="display: none;">
+          <input type="password" id="teacherPassInput" placeholder="أدخل كلمة سر المعلم..." style="width: 100%; padding: 12px; margin-bottom: 16px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 15px; box-sizing: border-box;">
+          <button id="teacherLoginBtn" style="width: 100%; padding: 12px; background: #1e293b; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer;">
+            دخول لوحة المعلم 🔐
+          </button>
+        </div>
+
+        <p id="loginStatus" style="margin-top: 12px; font-size: 13px; color: #ef4444;"></p>
+      </div>
+    </div>
+
+    <!-- شريط مصغر لعرض اسم الطالب ونقاطه في أعلى الصفحة -->
+    <div id="studentBar" style="display: none; background: #0f172a; color: white; padding: 10px 20px; justify-content: space-between; align-items: center; direction: rtl; font-family: 'Cairo', sans-serif;">
+      <div>
+        👤 الطالب: <strong id="displayStudentName"></strong> (<span id="displayStudentClass"></span>)
+      </div>
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <span style="background: #f59e0b; color: #000; padding: 4px 12px; border-radius: 20px; font-weight: bold;">
+          ⭐ النقاط: <span id="displayStudentPoints">0</span>
+        </span>
+        <button id="logoutBtn" style="background: #ef4444; color: white; border: none; padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 13px;">خروج</button>
+      </div>
+    </div>
+
+    <!-- زر فتح لوحة المعلم من داخل الصفحة (يظهر للمعلم فقط) -->
+    <div id="teacherControlsWrapper" style="display: none; text-align: center; margin: 25px 0; font-family: 'Cairo', sans-serif;">
+      <button id="openTeacherBtn" style="background: #1e293b; color: #f8fafc; border: 1px solid #475569; padding: 10px 18px; border-radius: 8px; cursor: pointer; font-size: 14px;">
+        🛠️ لوحة تحكم المعلم وترتيب المراكز
+      </button>
+      <button id="teacherLogoutBtn" style="background: #ef4444; color: #fff; border: none; padding: 10px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; margin-right: 8px;">
+        خروج المعلم
+      </button>
+    </div>
+
+    <!-- نافذة لوحة تحكم المعلم -->
+    <div id="teacherModal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); z-index: 10000; align-items: center; justify-content: center; font-family: 'Cairo', sans-serif; direction: rtl;">
+      <div style="background: #ffffff; color: #0f172a; padding: 24px; border-radius: 14px; width: 94%; max-width: 720px; max-height: 88vh; overflow-y: auto; box-shadow: 0 20px 30px rgba(0,0,0,0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">
+          <h3 style="margin: 0;">🏆 لوحة تحكم المعلم - المراكز وإدارة الطلاب</h3>
+          <button id="closeTeacherBtn" style="background: #e2e8f0; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold;">إغلاق ✖</button>
+        </div>
+
+        <!-- إدخال طالب جديد يدوياً -->
+        <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px; border-radius: 10px; margin-bottom: 16px;">
+          <p style="margin: 0 0 8px; font-weight: bold; font-size: 14px; color: #166534;">➕ إدخال طالب جديد:</p>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <input type="text" id="newStudentNameTeacher" placeholder="اسم الطالب ثلاثي..." style="flex: 2; min-width: 150px; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px;">
+            <input type="text" id="newStudentClassTeacher" placeholder="الفصل (مثلاً: 2/5)" style="flex: 1; min-width: 100px; padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px;">
+            <button id="teacherAddStudentBtn" style="background: #16a34a; color: white; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 13px;">إدخال الطالب</button>
+          </div>
+        </div>
+
+        <!-- بحث وتحديث القائمة -->
+        <div style="display: flex; gap: 10px; margin-bottom: 16px;">
+          <input type="text" id="teacherSearchInput" placeholder="ابحث باسم الطالب أو الفصل (مثلاً: ادم أو 2/5)..." style="flex: 1; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px;">
+          <button id="teacherSearchBtn" style="background: #2563eb; color: white; border: none; padding: 10px 16px; border-radius: 8px; cursor: pointer; font-weight: bold;">بحث</button>
+          <button id="teacherRefreshBtn" style="background: #0f766e; color: white; border: none; padding: 10px 14px; border-radius: 8px; cursor: pointer; font-weight: bold;">الكل</button>
+        </div>
+
+        <p id="teacherStatusMsg" style="font-size: 13px; color: #475569; margin: 0 0 12px;"></p>
+        <div id="teacherResultsList"></div>
+      </div>
+    </div>
+
+    <!-- قسم فيديو: ماذا لو غطيت الصحراء الكبرى بالألواح الشمسية؟ -->
+    <section class="card" style="margin: 25px auto; max-width: 820px; text-align: center; direction: rtl; font-family: 'Cairo', sans-serif;">
+      <h3>🎬 ماذا لو غطيت الصحراء الكبرى بالألواح الشمسية؟</h3>
+      <p style="color: #475569; font-size: 14px; margin-bottom: 16px;">
+        من قناة: الجانب المُشرق | Bright Side Arabic — شاهد الفيديو مباشرة داخل الصفحة.
+      </p>
+
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background: #0f172a;">
+        <iframe
+          src="https://www.youtube.com/embed/noQUV32xIPw?rel=0&modestbranding=1"
+          title="ماذا لو غطيت الصحراء الكبرى بالألواح الشمسية؟"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+
+    <!-- قسم: 10 أسئلة متجددة أسبوعياً (بنك 480 سؤالاً لمدة سنة) -->
+    <section id="studentQuizSection" class="card" style="display: none; margin: 25px auto; max-width: 820px; text-align: right; direction: rtl; font-family: 'Cairo', sans-serif; border-radius: 14px; padding: 22px; background: #ffffff; box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 8px;">
+        <h3 style="margin: 0; color: #0f172a;">🧠 10 أسئلة متجددة أسبوعياً عن الطاقة الشمسية</h3>
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <span id="weeklyBadgeLabel" style="background: #eef2ff; color: #3730a3; border: 1px solid #c7d2fe; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;">
+            🔄 480 سؤال (10 كل أسبوع)
+          </span>
+          <span style="background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;">
+            صح = +5 نقاط | غلط = -5 نقاط
+          </span>
+        </div>
+      </div>
+
+      <p style="color: #0f766e; font-weight: bold; font-size: 14px; margin: 0 0 16px; background: #f0fdfa; padding: 10px 12px; border-radius: 8px; border-right: 4px solid #0d9488;">
+        اتفرج على فيديوهات عن الطاقة الشمسية وجاوب وشاركنا إجاباتك. (480 سؤالاً تتجدد 10 أسئلة كل أسبوع لمدة سنة كاملة)
+      </p>
+
+      <div id="quizQuestionsContainer"></div>
+    </section>
+
+    <!-- قسم: مهام الطالب (يظهر للطالب فقط ويختفي عند المعلم) -->
+    <section id="studentTasksSection" class="card" style="display: none; margin: 25px auto; max-width: 820px; text-align: right; direction: rtl; font-family: 'Cairo', sans-serif; border-radius: 14px; padding: 22px; background: #ffffff; box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
+        <h3 style="margin: 0; color: #0f172a;">🎯 مهام الطالب</h3>
+        <span style="background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;">
+          10 مهام — اختر مهمة وأرسل حلك للمعلم
+        </span>
+      </div>
+
+      <p style="color: #475569; font-size: 14px; margin: 0 0 14px;">
+        اختر المهمة التي تريد حلها من القائمة، واكتب إجابتك ثم اضغط إرسال ليراجعها المعلم ويضيف لك النقاط.
+      </p>
+
+      <label for="taskSelect" style="display: block; font-weight: bold; margin-bottom: 6px; color: #0f172a; font-size: 14px;">
+        اختر المهمة:
+      </label>
+      <select id="taskSelect" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 14px; font-family: 'Cairo', sans-serif; margin-bottom: 12px; background: #f8fafc; box-sizing: border-box;">
+        <option value="task_1">المهمة الأولى: اكتب مقالاً صغيراً عن الطاقة الشمسية</option>
+        <option value="task_2">المهمة الثانية: أعطِ أمثلة للأماكن التي توضع فيها ألواح الطاقة الشمسية</option>
+        <option value="task_3">المهمة الثالثة: قارن بين الطاقة الشمسية والطاقة الأحفورية من حيث التأثير على البيئة</option>
+        <option value="task_4">المهمة الرابعة: اشرح باختصار دور العاكس (Inverter) في تحويل التيار من DC إلى AC</option>
+        <option value="task_5">المهمة الخامسة: اذكر أهم التحديات التي تواجه نشر الطاقة الشمسية</option>
+        <option value="task_6">المهمة السادسة: كيف يمكن الاستفادة من الصحراء الكبرى في توليد الطاقة الشمسية؟</option>
+        <option value="task_7">المهمة السابعة: اقترح 3 عادات يومية لتقليل انبعاثات الكربون</option>
+        <option value="task_8">المهمة الثامنة: لماذا تُعد الطاقة الشمسية طاقة متجددة مقارنة بالبترول والغاز؟</option>
+        <option value="task_9">المهمة التاسعة: اشرح لطفل صغير كيف تتحول أشعة الشمس إلى كهرباء</option>
+        <option value="task_10">المهمة العاشرة: اكتب فكرة مشروع يعتمد على الطاقة النظيفة</option>
+      </select>
+
+      <div id="activeTaskPrompt" style="padding: 12px 14px; background: #f0f9ff; border-right: 4px solid #0284c7; border-radius: 8px; margin-bottom: 12px; color: #0c4a6e; font-size: 14px; font-weight: bold;"></div>
+
+      <textarea id="taskAnswerTextarea" rows="4" placeholder="اكتب حل المهمة هنا..." style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 14px; font-family: 'Cairo', sans-serif; resize: vertical; box-sizing: border-box;"></textarea>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 12px;">
+        <button type="button" id="submitTaskBtn" style="background: #2563eb; color: #ffffff; border: none; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer;">
+          إرسال حل المهمة 📤
+        </button>
+        <span id="taskStatusMsg" style="font-size: 13px; color: #475569;"></span>
+      </div>
+
+      <div id="submittedTasksList" style="margin-top: 16px;"></div>
+    </section>
+
+    <!-- قسم: اكتب أنت استفدت إيه؟ (يظهر للطالب فقط ويختفي عند المعلم) -->
+    <section id="studentTakeawaySection" class="card" style="display: none; margin: 25px auto; max-width: 820px; text-align: right; direction: rtl; font-family: 'Cairo', sans-serif; border-radius: 14px; padding: 22px; background: #ffffff; box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
+        <h3 style="margin: 0; color: #0f172a;">✍️ اكتب أنت استفدت إيه؟</h3>
+        <span style="background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;">
+          يصل مباشرة للمعلم لتقييمه ومنح النقاط
+        </span>
+      </div>
+
+      <p style="color: #475569; font-size: 14px; margin: 0 0 14px;">
+        شاركنا ملخص بسيط للي فهمته من الفيديو أو الدرس، والمعلم هيطلع عليه ويضيف لك نقاط حسب إجابتك.
+      </p>
+
+      <textarea id="takeawayTextarea" rows="4" placeholder="اكتب هنا ما استفدته اليوم..." style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 14px; font-family: 'Cairo', sans-serif; resize: vertical; box-sizing: border-box;"></textarea>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 12px;">
+        <button type="button" id="submitTakeawayBtn" style="background: #16a34a; color: #ffffff; border: none; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer;">
+          إرسال الاستفادة 🚀
+        </button>
+        <span id="takeawayStatusMsg" style="font-size: 13px; color: #475569;"></span>
+      </div>
+
+      <div id="savedTakeawayPreview" style="display: none; margin-top: 16px; padding: 12px 14px; background: #f8fafc; border-right: 4px solid #16a34a; border-radius: 8px;">
+        <div style="font-size: 12px; color: #64748b; margin-bottom: 4px;">📌 آخر استفادة مسجلة لك:</div>
+        <p id="savedTakeawayText" style="margin: 0; color: #0f172a; font-size: 14px; line-height: 1.6;"></p>
+      </div>
+    </section>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+      import {
+        getFirestore,
+        doc,
+        setDoc,
+        getDoc,
+        updateDoc,
+        deleteDoc,
+        collection,
+        getDocs,
+        increment
+      } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyB9XhsP_WZU6NQ3xSA8QoYMLLcpgDJ8u80",
+        authDomain: "clean-energy-for-a-better-life.firebaseapp.com",
+        projectId: "clean-energy-for-a-better-life",
+        storageBucket: "clean-energy-for-a-better-life.firebasestorage.app",
+        messagingSenderId: "994748821775",
+        appId: "1:994748821775:web:0b0d78b6e4161e88d60e7a",
+        measurementId: "G-TLKM472933"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      const TEACHER_PASSCODE = "9998887070";
+      const teacherControlsWrapper = document.getElementById("teacherControlsWrapper");
+      const studentTakeawaySection = document.getElementById("studentTakeawaySection");
+      const studentTasksSection = document.getElementById("studentTasksSection");
+      const studentQuizSection = document.getElementById("studentQuizSection");
+
+      // --- التحقق من الاسم الثلاثي ومنع تكرار الاسم في نفس الفصل ---
+      function normalizeArabicText(str) {
+        return String(str || "")
+          .trim()
+          .replace(/\s+/g, " ")
+          .replace(/[أإآا]/g, "ا")
+          .replace(/ى/g, "ي")
+          .replace(/ة/g, "ه")
+          .replace(/ؤ/g, "و")
+          .replace(/ئ/g, "ي")
+          .toLowerCase();
+      }
+
+      function isTripleName(name) {
+        const cleaned = String(name || "").trim().replace(/\s+/g, " ");
+        const parts = cleaned.split(" ").filter((p) => p.length >= 2);
+        return parts.length >= 3;
+      }
+
+      // --- حساب الأسبوع الحالي (48 أسبوعاً سنوياً × 10 أسئلة = 480 سؤالاً) ---
+      function getCurrentWeekInfo(dateObj = new Date()) {
+        const utcDate = new Date(Date.UTC(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate()));
+        const dayNum = utcDate.getUTCDay() || 7;
+        utcDate.setUTCDate(utcDate.getUTCDate() + 4 - dayNum);
+        const yearStart = new Date(Date.UTC(utcDate.getUTCFullYear(), 0, 1));
+        const rawWeek = Math.ceil((((utcDate - yearStart) / 86400000) + 1) / 7);
+        const weekSlot = ((rawWeek - 1) % 48) + 1;
+        const isoYear = utcDate.getUTCFullYear();
+        return {
+          weekKey: `${isoYear}_W${String(weekSlot).padStart(2, "0")}`,
+          weekNumber: weekSlot,
+          isoYear: isoYear
+        };
+      }
+
+      // --- بناء بنك 480 سؤالاً عن الطاقة الشمسية (10 أسئلة لكل أسبوع لمدة 48 أسبوعاً) ---
+      function build480SolarQuestions() {
+        const coreConcepts = [
+          {
+            topic: "الخلايا الكهروضوئية والسيليكون",
+            q: "ما دور الخلايا الكهروضوئية المصنوعة من السيليكون في اللوح الشمسي؟",
+            correct: "امتصاص ضوء الشمس وتحرير الإلكترونات لتوليد تيار كهربائي",
+            wrong: ["حرق الفحم لتوليد البخار", "تبريد الهواء داخل الغرف", "منع وصول الضوء للأرض"]
+          },
+          {
+            topic: "التيار المستمر (DC)",
+            q: "أي نوع من التيار الكهربائي تنتجه الألواح الشمسية مباشرة عند سقوط الضوء عليها؟",
+            correct: "تيار كهربائي مستمر (DC)",
+            wrong: ["تيار متناوب عالي الجهد (AC) تلقائياً", "موجات صوتية", "طاقة حركية ميكانيكية"]
+          },
+          {
+            topic: "العاكس الكهربائي (Inverter)",
+            q: "لماذا يُستخدم العاكس (Inverter) في أنظمة الطاقة الشمسية المنزلية؟",
+            correct: "لتحويل التيار المستمر (DC) إلى تيار متناوب (AC) مناسب للأجهزة",
+            wrong: ["لتخزين المياه الساخنة", "لزيادة انبعاثات ثاني أكسيد الكربون", "لإيقاف عمل الألواح نهاراً"]
+          },
+          {
+            topic: "الطاقة المتجددة والبيئة",
+            q: "لماذا تُعد الطاقة الشمسية مصدراً متجدداً وصديقاً للبيئة؟",
+            correct: "لأنها تعتمد على ضوء الشمس المتجدد ولا تصدر انبعاثات ملوثة أثناء التشغيل",
+            wrong: ["لأنها تنفد خلال أشهر قليلة", "لأنها تعتمد على حرق البترول", "لأنها تزيد من دخان العوادم"]
+          },
+          {
+            topic: "مقارنة الطاقة الشمسية بالوقود الأحفوري",
+            q: "ما الفارق البيئي الأبرز بين الطاقة الشمسية والفحم أو البترول؟",
+            correct: "الطاقة الشمسية لا تلوث الهواء بينما ينتج عن حرق الوقود الأحفوري غازات ضارة",
+            wrong: ["الوقود الأحفوري أنظف بيئياً دائماً", "الطاقة الشمسية تزيد الاحتباس الحراري", "لا يوجد أي فرق بينهما"]
+          },
+          {
+            topic: "الطاقة الشمسية في الصحراء الكبرى",
+            q: "ما الذي يجعل الصحراء الكبرى موقعاً واعداً لمشاريع الطاقة الشمسية الكبرى؟",
+            correct: "المساحات الشاسعة وسطوع الشمس القوي مع قلة السحب معظم أيام السنة",
+            wrong: ["الأمطار الغزيرة المستمرة طوال العام", "انعدام أشعة الشمس", "البرودة القطبية الدائمة"]
+          },
+          {
+            topic: "تحديات نشر الطاقة الشمسية",
+            q: "ما أبرز التحديات التي تواجه التوسع في الطاقة الشمسية على نطاق واسع؟",
+            correct: "تكلفة التركيب الأولية والبنية التحتية وتخزين أو نقل الطاقة",
+            wrong: ["أن أشعة الشمس ضارة بالنباتات", "أن الطاقة الشمسية تستهلك الفحم", "عدم وجود أي فائدة اقتصادية أو بيئية"]
+          },
+          {
+            topic: "أماكن تركيب الألواح الشمسية",
+            q: "أين يمكن تركيب الألواح الشمسية للاستفادة العملية من الكهرباء النظيفة؟",
+            correct: "فوق أسطح المنازل والمدارس والمصانع والمحطات الشمسية",
+            wrong: ["داخل كهوف مظلمة تحت الأرض", "داخل أفران الطهي", "في أعماق المحيطات المظلمة"]
+          },
+          {
+            topic: "عوادم السيارات وتقليل الكربون",
+            q: "كيف يساهم التوسع في الطاقة النظيفة والمركبات الكهربائية في تحسين جودة الهواء؟",
+            correct: "بتقليل انبعاثات غاز ثاني أكسيد الكربون والملوثات الناتجة عن العوادم",
+            wrong: ["بزيادة غازات العوادم السامة", "برفع درجة حرارة الشوارع عمداً", "بتقليل المساحات الخضراء"]
+          },
+          {
+            topic: "تخزين الطاقة والصيانة",
+            q: "كيف نحافظ على كفاءة عمل منظومة الطاقة الشمسية على المدى الطويل؟",
+            correct: "بتنظيف الألواح من الغبار بانتظام وصيانة البطاريات والعاكس",
+            wrong: ["بتغطية الألواح بالأتربة والورق", "بترك الأسلاك مكشوفة دون فحص", "بتشغيلها في الظلام فقط"]
+          }
+        ];
+
+        const angles = [
+          "من حيث الفكرة العلمية الأساسية",
+          "في التطبيق العملي اليومي",
+          "من منظور حماية البيئة وتقليل الانبعاثات",
+          "في سياق المقارنة مع المصادر التقليدية",
+          "من ناحية الكفاءة والاستدامة المستقبلية",
+          "في ضوء التخطيط لمشاريع الطاقة النظيفة",
+          "من حيث الاستفادة في المدارس والمنازل",
+          "في إطار مواجهة تغير المناخ"
+        ];
+
+        const bank = [];
+        let idCounter = 1;
+
+        for (let weekIdx = 0; weekIdx < 48; weekIdx++) {
+          const angle = angles[weekIdx % angles.length];
+          for (let qInWeek = 0; qInWeek < 10; qInWeek++) {
+            const base = coreConcepts[(qInWeek + weekIdx) % coreConcepts.length];
+            const shift = (weekIdx + qInWeek) % 4;
+            const allFour = [base.correct, ...base.wrong];
+            const rotatedOptions = [
+              allFour[(0 + shift) % 4],
+              allFour[(1 + shift) % 4],
+              allFour[(2 + shift) % 4],
+              allFour[(3 + shift) % 4]
+            ];
+            const correctIndex = rotatedOptions.indexOf(base.correct);
+
+            bank.push({
+              id: `q_${idCounter}`,
+              weekSlot: weekIdx + 1,
+              question: `${base.q} (${angle} — أسبوع ${weekIdx + 1})`,
+              options: rotatedOptions,
+              correctIndex: correctIndex
+            });
+            idCounter++;
+          }
+        }
+
+        return bank;
+      }
+
+      const SOLAR_QUESTION_BANK_480 = build480SolarQuestions();
+      const currentWeekInfo = getCurrentWeekInfo();
+      const activeWeeklyQuestions = SOLAR_QUESTION_BANK_480.filter(
+        (item) => item.weekSlot === currentWeekInfo.weekNumber
+      );
+
+      const TASKS_CATALOG = {
+        task_1: {
+          title: "المهمة الأولى: مقال صغير عن الطاقة الشمسية",
+          prompt: "اكتب مقالاً صغيراً عن الطاقة الشمسية وأهميتها في توفير كهرباء نظيفة ومستدامة."
+        },
+        task_2: {
+          title: "المهمة الثانية: أماكن وضع ألواح الطاقة الشمسية",
+          prompt: "أعطِ أمثلة للأماكن التي توضع فيها ألواح الطاقة الشمسية (مثل أسطح المنازل، المدارس، المحطات الشمسية...)."
+        },
+        task_3: {
+          title: "المهمة الثالثة: مقارنة مع الطاقة الأحفورية",
+          prompt: "قارن بين الطاقة الشمسية والطاقة الأحفورية (الفحم والبترول) من حيث التأثير على البيئة والهواء."
+        },
+        task_4: {
+          title: "المهمة الرابعة: دور العاكس (Inverter)",
+          prompt: "اشرح باختصار دور العاكس (Inverter) في تحويل التيار الكهربائي من DC إلى AC."
+        },
+        task_5: {
+          title: "المهمة الخامسة: تحديات نشر الطاقة الشمسية",
+          prompt: "اذكر أهم التحديات التي تواجه نشر الطاقة الشمسية (مثل المساحة أو التكلفة أو نقل الطاقة)."
+        },
+        task_6: {
+          title: "المهمة السادسة: الطاقة الشمسية في الصحراء الكبرى",
+          prompt: "كيف يمكن الاستفادة من الصحراء الكبرى في توليد الطاقة الشمسية وما أبرز العقبات؟"
+        },
+        task_7: {
+          title: "المهمة السابعة: عادات يومية لتقليل الكربون",
+          prompt: "اقترح 3 سلوكيات أو عادات يومية تساعد في تقليل انبعاثات الكربون وحماية البيئة."
+        },
+        task_8: {
+          title: "المهمة الثامنة: لماذا الطاقة الشمسية متجددة؟",
+          prompt: "لماذا تُعد الطاقة الشمسية طاقة متجددة مقارنة بالبترول والغاز الطبيعي؟"
+        },
+        task_9: {
+          title: "المهمة التاسعة: شرح مبسط لطفل صغير",
+          prompt: "تخيل أنك تشرح لطفل صغير كيف تتحول أشعة الشمس إلى كهرباء داخل اللوح الشمسي."
+        },
+        task_10: {
+          title: "المهمة العاشرة: فكرة مشروع بالطاقة النظيفة",
+          prompt: "اكتب فكرة مشروع مدرسي أو منزلي يعتمد على الطاقة الشمسية أو الطاقة النظيفة."
+        }
+      };
+
+      function escapeHtml(str) {
+        return String(str || "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function setRoleVisibility(role) {
+        if (role === "teacher") {
+          teacherControlsWrapper.style.display = "block";
+          studentTakeawaySection.style.display = "none";
+          studentTasksSection.style.display = "none";
+          studentQuizSection.style.display = "none";
+          document.getElementById("studentBar").style.display = "none";
+          document.getElementById("loginOverlay").style.display = "none";
+        } else if (role === "student") {
+          teacherControlsWrapper.style.display = "none";
+          studentTakeawaySection.style.display = "block";
+          studentTasksSection.style.display = "block";
+          studentQuizSection.style.display = "block";
+          document.getElementById("studentBar").style.display = "flex";
+          document.getElementById("loginOverlay").style.display = "none";
+        } else {
+          teacherControlsWrapper.style.display = "none";
+          studentTakeawaySection.style.display = "none";
+          studentTasksSection.style.display = "none";
+          studentQuizSection.style.display = "none";
+          document.getElementById("studentBar").style.display = "none";
+          document.getElementById("loginOverlay").style.display = "flex";
+        }
+      }
+
+      function createStudentId(name, studentClass) {
+        const raw = (normalizeArabicText(name) + "_" + normalizeArabicText(studentClass));
+        return raw.replace(/[^a-z0-9\u0600-\u06FF_-]+/g, "_");
+      }
+
+      function getOrdinalRankName(rankNumber) {
+        const names = {
+          1: "المركز الأول",
+          2: "المركز الثاني",
+          3: "المركز الثالث",
+          4: "المركز الرابع",
+          5: "المركز الخامس",
+          6: "المركز السادس",
+          7: "المركز السابع",
+          8: "المركز الثامن",
+          9: "المركز التاسع",
+          10: "المركز العاشر"
+        };
+        return names[rankNumber] || `المركز رقم ${rankNumber}`;
+      }
+
+      function getRankBadge(rankNumber) {
+        if (rankNumber === 1) {
+          return `<span style="background: #fef3c7; color: #92400e; border: 1px solid #f59e0b; padding: 3px 10px; border-radius: 20px; font-weight: bold; font-size: 13px;">👑 ${getOrdinalRankName(rankNumber)}</span>`;
+        }
+        if (rankNumber === 2) {
+          return `<span style="background: #f1f5f9; color: #334155; border: 1px solid #94a3b8; padding: 3px 10px; border-radius: 20px; font-weight: bold; font-size: 13px;">🥈 ${getOrdinalRankName(rankNumber)}</span>`;
+        }
+        if (rankNumber === 3) {
+          return `<span style="background: #ffedd5; color: #9a3412; border: 1px solid #fb923c; padding: 3px 10px; border-radius: 20px; font-weight: bold; font-size: 13px;">🥉 ${getOrdinalRankName(rankNumber)}</span>`;
+        }
+        return `<span style="background: #eef2ff; color: #3730a3; border: 1px solid #c7d2fe; padding: 3px 10px; border-radius: 20px; font-weight: bold; font-size: 12px;">🏅 ${getOrdinalRankName(rankNumber)}</span>`;
+      }
+
+      const tabStudentBtn = document.getElementById("tabStudentBtn");
+      const tabTeacherBtn = document.getElementById("tabTeacherBtn");
+      const studentLoginForm = document.getElementById("studentLoginForm");
+      const teacherLoginForm = document.getElementById("teacherLoginForm");
+      const loginStatusEl = document.getElementById("loginStatus");
+
+      tabStudentBtn.addEventListener("click", () => {
+        studentLoginForm.style.display = "block";
+        teacherLoginForm.style.display = "none";
+        tabStudentBtn.style.background = "#16a34a";
+        tabStudentBtn.style.color = "#fff";
+        tabTeacherBtn.style.background = "transparent";
+        tabTeacherBtn.style.color = "#334155";
+        loginStatusEl.textContent = "";
+      });
+
+      tabTeacherBtn.addEventListener("click", () => {
+        studentLoginForm.style.display = "none";
+        teacherLoginForm.style.display = "block";
+        tabTeacherBtn.style.background = "#1e293b";
+        tabTeacherBtn.style.color = "#fff";
+        tabStudentBtn.style.background = "transparent";
+        tabStudentBtn.style.color = "#334155";
+        loginStatusEl.textContent = "";
+      });
+
+      let currentStudentId = localStorage.getItem("solar_student_id");
+      const isTeacherLoggedIn = sessionStorage.getItem("solar_teacher_logged_in") === "true";
+
+      // --- منطق الـ 10 أسئلة المتجددة أسبوعياً (صح +5، غلط -5) ---
+      const quizQuestionsContainer = document.getElementById("quizQuestionsContainer");
+      const weeklyBadgeLabel = document.getElementById("weeklyBadgeLabel");
+      let currentWeekQuizResults = {};
+
+      weeklyBadgeLabel.textContent = `🔄 أسبوع ${currentWeekInfo.weekNumber} من 48 (${SOLAR_QUESTION_BANK_480.length} سؤال)`;
+
+      function renderQuizQuestions(weekResults = {}) {
+        currentWeekQuizResults = weekResults || {};
+        quizQuestionsContainer.innerHTML = "";
+
+        activeWeeklyQuestions.forEach((qItem, qIdx) => {
+          const previous = currentWeekQuizResults[qItem.id];
+          const qCard = document.createElement("div");
+          qCard.style.cssText = "border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; margin-bottom: 14px; background: #f8fafc;";
+
+          const optionsHtml = qItem.options.map((optText, idx) => {
+            let btnBg = "#ffffff";
+            let btnBorder = "#cbd5e1";
+            let btnColor = "#0f172a";
+
+            if (previous) {
+              if (idx === previous.selectedIndex) {
+                if (previous.isCorrect) {
+                  btnBg = "#dcfce7";
+                  btnBorder = "#16a34a";
+                  btnColor = "#166534";
+                } else {
+                  btnBg = "#fee2e2";
+                  btnBorder = "#dc2626";
+                  btnColor = "#991b1b";
+                }
+              } else if (!previous.isCorrect && idx === qItem.correctIndex) {
+                btnBg = "#ecfdf5";
+                btnBorder = "#10b981";
+                btnColor = "#065f46";
+              }
+            }
+
+            return `
+              <button type="button" class="quiz-opt-btn" data-opt-index="${idx}" ${previous ? "disabled" : ""} style="text-align: right; padding: 9px 12px; border: 1px solid ${btnBorder}; background: ${btnBg}; color: ${btnColor}; border-radius: 8px; cursor: ${previous ? "default" : "pointer"}; font-size: 13px; font-weight: bold; font-family: 'Cairo', sans-serif;">
+                ${escapeHtml(optText)}
+              </button>
+            `;
+          }).join("");
+
+          let feedbackText = "";
+          let feedbackColor = "#475569";
+          if (previous) {
+            if (previous.isCorrect) {
+              feedbackColor = "#15803d";
+              feedbackText = "✅ إجابة صحيحة! حصلت على +5 نقاط.";
+            } else {
+              feedbackColor = "#b91c1c";
+              feedbackText = `❌ إجابة خاطئة! تم خصم 5 نقاط. الإجابة الصحيحة هي: (${qItem.options[qItem.correctIndex]}).`;
+            }
+          }
+
+          qCard.innerHTML = `
+            <div style="font-weight: bold; color: #0f172a; margin-bottom: 10px; font-size: 14px;">${qIdx + 1}. ${escapeHtml(qItem.question)}</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px;">
+              ${optionsHtml}
+            </div>
+            <div class="quiz-feedback" style="margin-top: 10px; font-size: 13px; font-weight: bold; color: ${feedbackColor};">${escapeHtml(feedbackText)}</div>
+          `;
+
+          const optButtons = qCard.querySelectorAll(".quiz-opt-btn");
+          const feedbackEl = qCard.querySelector(".quiz-feedback");
+
+          optButtons.forEach((btn) => {
+            btn.addEventListener("click", async () => {
+              const activeStudentId = currentStudentId || localStorage.getItem("solar_student_id");
+              if (!activeStudentId) {
+                feedbackEl.style.color = "#dc2626";
+                feedbackEl.textContent = "سجّل دخولك كطالب أولاً عشان تتحسب نقطك.";
+                return;
+              }
+              if (currentWeekQuizResults[qItem.id]) return;
+
+              const selectedIndex = parseInt(btn.dataset.optIndex, 10);
+              const isCorrect = selectedIndex === qItem.correctIndex;
+              const delta = isCorrect ? 5 : -5;
+
+              optButtons.forEach((b) => {
+                b.disabled = true;
+                b.style.cursor = "default";
+              });
+
+              feedbackEl.style.color = "#475569";
+              feedbackEl.textContent = "جاري تسجيل الإجابة وتحديث النقاط...";
+
+              try {
+                const studentRef = doc(db, "students", activeStudentId);
+                await setDoc(studentRef, {
+                  points: increment(delta),
+                  quizResultsByWeek: {
+                    [currentWeekInfo.weekKey]: {
+                      [qItem.id]: {
+                        selectedIndex: selectedIndex,
+                        isCorrect: isCorrect,
+                        delta: delta,
+                        answeredAt: new Date().toISOString()
+                      }
+                    }
+                  }
+                }, { merge: true });
+
+                currentWeekQuizResults[qItem.id] = {
+                  selectedIndex: selectedIndex,
+                  isCorrect: isCorrect,
+                  delta: delta
+                };
+
+                const ptsSpan = document.getElementById("displayStudentPoints");
+                const currentPts = parseInt(ptsSpan.textContent, 10) || 0;
+                ptsSpan.textContent = currentPts + delta;
+
+                if (isCorrect) {
+                  btn.style.background = "#dcfce7";
+                  btn.style.borderColor = "#16a34a";
+                  btn.style.color = "#166534";
+                  feedbackEl.style.color = "#15803d";
+                  feedbackEl.textContent = "✅ إجابة صحيحة! حصلت على +5 نقاط.";
+                } else {
+                  btn.style.background = "#fee2e2";
+                  btn.style.borderColor = "#dc2626";
+                  btn.style.color = "#991b1b";
+                  const rightBtn = qCard.querySelector(`.quiz-opt-btn[data-opt-index="${qItem.correctIndex}"]`);
+                  if (rightBtn) {
+                    rightBtn.style.background = "#ecfdf5";
+                    rightBtn.style.borderColor = "#10b981";
+                    rightBtn.style.color = "#065f46";
+                  }
+                  feedbackEl.style.color = "#b91c1c";
+                  feedbackEl.textContent = `❌ إجابة خاطئة! تم خصم 5 نقاط. الإجابة الصحيحة هي: (${qItem.options[qItem.correctIndex]}).`;
+                }
+              } catch (err) {
+                console.error(err);
+                optButtons.forEach((b) => {
+                  b.disabled = false;
+                  b.style.cursor = "pointer";
+                });
+                feedbackEl.style.color = "#dc2626";
+                feedbackEl.textContent = "حدث خطأ أثناء حفظ النقاط: " + err.message;
+              }
+            });
+          });
+
+          quizQuestionsContainer.appendChild(qCard);
+        });
+      }
+
+      renderQuizQuestions({});
+
+      // --- مهام الطالب ---
+      const taskSelect = document.getElementById("taskSelect");
+      const activeTaskPrompt = document.getElementById("activeTaskPrompt");
+      const taskAnswerTextarea = document.getElementById("taskAnswerTextarea");
+      const submitTaskBtn = document.getElementById("submitTaskBtn");
+      const taskStatusMsg = document.getElementById("taskStatusMsg");
+      const submittedTasksList = document.getElementById("submittedTasksList");
+      let currentStudentTasks = {};
+
+      function updateActiveTaskView() {
+        const key = taskSelect.value;
+        const item = TASKS_CATALOG[key];
+        activeTaskPrompt.textContent = item ? item.prompt : "";
+        taskAnswerTextarea.value = (currentStudentTasks[key] && currentStudentTasks[key].answer) || "";
+      }
+
+      function renderStudentSubmittedTasks(tasksObj) {
+        currentStudentTasks = tasksObj || {};
+        const entries = Object.entries(currentStudentTasks);
+        if (entries.length === 0) {
+          submittedTasksList.innerHTML = "";
+          return;
+        }
+        submittedTasksList.innerHTML = `<div style="font-weight: bold; color: #0f172a; margin-bottom: 8px; font-size: 13px;">✅ المهام التي أرسلتها (${entries.length} من 10):</div>` +
+          entries.map(([key, val]) => {
+            const title = (TASKS_CATALOG[key] && TASKS_CATALOG[key].title) || key;
+            return `
+              <div style="padding: 10px 12px; background: #f8fafc; border-right: 4px solid #2563eb; border-radius: 8px; margin-bottom: 8px;">
+                <div style="font-weight: bold; color: #1e3a8a; font-size: 13px; margin-bottom: 4px;">${escapeHtml(title)}</div>
+                <div style="color: #334155; font-size: 13px; white-space: pre-wrap; line-height: 1.5;">${escapeHtml(val.answer || "")}</div>
+              </div>
+            `;
+          }).join("");
+      }
+
+      taskSelect.addEventListener("change", () => {
+        taskStatusMsg.textContent = "";
+        updateActiveTaskView();
+      });
+
+      updateActiveTaskView();
+
+      submitTaskBtn.addEventListener("click", async () => {
+        const activeStudentId = currentStudentId || localStorage.getItem("solar_student_id");
+        const taskKey = taskSelect.value;
+        const answer = taskAnswerTextarea.value.trim();
+
+        if (!activeStudentId) {
+          taskStatusMsg.style.color = "#dc2626";
+          taskStatusMsg.textContent = "سجّل دخولك كطالب أولاً عشان تتحفظ إجابتك.";
+          return;
+        }
+
+        if (!answer) {
+          taskStatusMsg.style.color = "#dc2626";
+          taskStatusMsg.textContent = "اكتب حل المهمة الأول قبل الإرسال.";
+          return;
+        }
+
+        submitTaskBtn.disabled = true;
+        submitTaskBtn.textContent = "جاري الإرسال...";
+        taskStatusMsg.style.color = "#475569";
+        taskStatusMsg.textContent = "جاري حفظ حل المهمة...";
+
+        try {
+          const taskEntry = {
+            title: (TASKS_CATALOG[taskKey] && TASKS_CATALOG[taskKey].title) || taskKey,
+            answer: answer,
+            updatedAt: new Date().toISOString()
+          };
+          const studentRef = doc(db, "students", activeStudentId);
+          await setDoc(studentRef, {
+            studentTasks: {
+              [taskKey]: taskEntry
+            }
+          }, { merge: true });
+
+          currentStudentTasks[taskKey] = taskEntry;
+          renderStudentSubmittedTasks(currentStudentTasks);
+          taskStatusMsg.style.color = "#15803d";
+          taskStatusMsg.textContent = "تم حفظ حل المهمة وإرساله للمعلم بنجاح!";
+        } catch (err) {
+          console.error(err);
+          taskStatusMsg.style.color = "#dc2626";
+          taskStatusMsg.textContent = "حدث خطأ أثناء الإرسال: " + err.message;
+        } finally {
+          submitTaskBtn.disabled = false;
+          submitTaskBtn.textContent = "إرسال حل المهمة 📤";
+        }
+      });
+
+      // --- حفظ وعرض استفادة الطالب ---
+      const takeawayTextarea = document.getElementById("takeawayTextarea");
+      const submitTakeawayBtn = document.getElementById("submitTakeawayBtn");
+      const takeawayStatusMsg = document.getElementById("takeawayStatusMsg");
+      const savedTakeawayPreview = document.getElementById("savedTakeawayPreview");
+      const savedTakeawayText = document.getElementById("savedTakeawayText");
+
+      function showSavedTakeaway(text) {
+        if (text && text.trim()) {
+          savedTakeawayText.textContent = text;
+          savedTakeawayPreview.style.display = "block";
+          if (!takeawayTextarea.value) {
+            takeawayTextarea.value = text;
+          }
+        } else {
+          savedTakeawayPreview.style.display = "none";
+        }
+      }
+
+      submitTakeawayBtn.addEventListener("click", async () => {
+        const activeStudentId = currentStudentId || localStorage.getItem("solar_student_id");
+        const text = takeawayTextarea.value.trim();
+
+        if (!activeStudentId) {
+          takeawayStatusMsg.style.color = "#dc2626";
+          takeawayStatusMsg.textContent = "سجّل دخولك كطالب أولاً عشان تتحفظ إجابتك.";
+          return;
+        }
+
+        if (!text) {
+          takeawayStatusMsg.style.color = "#dc2626";
+          takeawayStatusMsg.textContent = "اكتب اللي استفدته الأول قبل الإرسال.";
+          return;
+        }
+
+        submitTakeawayBtn.disabled = true;
+        submitTakeawayBtn.textContent = "جاري الإرسال...";
+        takeawayStatusMsg.style.color = "#475569";
+        takeawayStatusMsg.textContent = "جاري حفظ الاستفادة في قاعدة البيانات...";
+
+        try {
+          const studentRef = doc(db, "students", activeStudentId);
+          await setDoc(studentRef, {
+            studentTakeaway: text,
+            takeawayUpdatedAt: new Date().toISOString()
+          }, { merge: true });
+
+          showSavedTakeaway(text);
+          takeawayStatusMsg.style.color = "#15803d";
+          takeawayStatusMsg.textContent = "تم إرسال استفادتك بنجاح وسيراجعها المعلم!";
+        } catch (err) {
+          console.error(err);
+          takeawayStatusMsg.style.color = "#dc2626";
+          takeawayStatusMsg.textContent = "حدث خطأ أثناء الإرسال: " + err.message;
+        } finally {
+          submitTakeawayBtn.disabled = false;
+          submitTakeawayBtn.textContent = "إرسال الاستفادة 🚀";
+        }
+      });
+
+      async function loadStudentProfile(studentId) {
+        const studentRef = doc(db, "students", studentId);
+        const snap = await getDoc(studentRef);
+
+        if (snap.exists()) {
+          const data = snap.data();
+          document.getElementById("displayStudentName").textContent = data.name;
+          document.getElementById("displayStudentClass").textContent = data.studentClass;
+          document.getElementById("displayStudentPoints").textContent = data.points || 0;
+          setRoleVisibility("student");
+          showSavedTakeaway(data.studentTakeaway || "");
+          renderStudentSubmittedTasks(data.studentTasks || {});
+          updateActiveTaskView();
+          const weekMap = (data.quizResultsByWeek && data.quizResultsByWeek[currentWeekInfo.weekKey]) || {};
+          renderQuizQuestions(weekMap);
+        } else {
+          localStorage.removeItem("solar_student_id");
+          setRoleVisibility(null);
+        }
+      }
+
+      if (isTeacherLoggedIn) {
+        setRoleVisibility("teacher");
+      } else if (currentStudentId) {
+        loadStudentProfile(currentStudentId);
+      } else {
+        setRoleVisibility(null);
+      }
+
+      // دخول الطالب (اسم ثلاثي + منع التكرار في نفس الفصل أو السماح في فصل مختلف)
+      document.getElementById("loginBtn").addEventListener("click", async () => {
+        const rawName = document.getElementById("studentNameInput").value.trim().replace(/\s+/g, " ");
+        const rawClass = document.getElementById("studentClassInput").value.trim().replace(/\s+/g, " ");
+        const btn = document.getElementById("loginBtn");
+
+        if (!rawName || !rawClass) {
+          loginStatusEl.textContent = "من فضلك اكتب اسمك الثلاثي وفصلك أولاً.";
+          return;
+        }
+
+        if (!isTripleName(rawName)) {
+          loginStatusEl.textContent = "يجب كتابة الاسم ثلاثياً (3 كلمات على الأقل)، لا يُسمح بالاسم الثنائي.";
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "جاري التحقق من الاسم...";
+        loginStatusEl.textContent = "";
+
+        try {
+          const normalizedTargetName = normalizeArabicText(rawName);
+          const normalizedTargetClass = normalizeArabicText(rawClass);
+          const studentId = createStudentId(rawName, rawClass);
+          const studentRef = doc(db, "students", studentId);
+          const exactSnap = await getDoc(studentRef);
+
+          if (exactSnap.exists()) {
+            const existingData = exactSnap.data();
+            const isSameDeviceSession = localStorage.getItem("solar_student_id") === studentId;
+            const hasActivity =
+              (existingData.points || 0) !== 0 ||
+              Boolean((existingData.studentTakeaway || "").trim()) ||
+              Object.keys(existingData.studentTasks || {}).length > 0 ||
+              Object.keys(existingData.quizResultsByWeek || {}).length > 0;
+
+            if (!isSameDeviceSession && hasActivity) {
+              loginStatusEl.textContent = "هذا الاسم الثلاثي مسجل بالفعل في نفس الفصل؛ يجب تغيير الاسم أو اختيار فصل مختلف.";
+              return;
+            }
+          } else {
+            const allSnap = await getDocs(collection(db, "students"));
+            let duplicateInSameClass = false;
+            let foundInOtherClass = null;
+
+            allSnap.forEach((docSnap) => {
+              const d = docSnap.data() || {};
+              const dNameNorm = normalizeArabicText(d.name);
+              const dClassNorm = normalizeArabicText(d.studentClass);
+              if (dNameNorm === normalizedTargetName) {
+                if (dClassNorm === normalizedTargetClass) {
+                  duplicateInSameClass = true;
+                } else {
+                  foundInOtherClass = d.studentClass;
+                }
+              }
+            });
+
+            if (duplicateInSameClass) {
+              loginStatusEl.textContent = "هذا الاسم الثلاثي مكرر في نفس الفصل؛ يجب أن يكون الاسم مختلفاً أو في فصل مختلف.";
+              return;
+            }
+
+            await setDoc(studentRef, {
+              name: rawName,
+              studentClass: rawClass,
+              points: 0,
+              createdAt: new Date().toISOString()
+            });
+
+            if (foundInOtherClass) {
+              console.info(`تم تسجيل الاسم في فصل مختلف (${rawClass}) عن الفصل السابق (${foundInOtherClass}).`);
+            }
+          }
+
+          sessionStorage.removeItem("solar_teacher_logged_in");
+          currentStudentId = studentId;
+          localStorage.setItem("solar_student_id", studentId);
+          await loadStudentProfile(studentId);
+        } catch (error) {
+          console.error(error);
+          loginStatusEl.textContent = "حدث خطأ في الاتصال: " + error.message;
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "ابدأ التعلم 🚀";
+        }
+      });
+
+      // دخول المعلم
+      document.getElementById("teacherLoginBtn").addEventListener("click", () => {
+        const pass = document.getElementById("teacherPassInput").value.trim();
+        if (pass !== TEACHER_PASSCODE) {
+          loginStatusEl.textContent = "كلمة سر المعلم غير صحيحة.";
+          return;
+        }
+        loginStatusEl.textContent = "";
+        sessionStorage.setItem("solar_teacher_logged_in", "true");
+        setRoleVisibility("teacher");
+        document.getElementById("teacherModal").style.display = "flex";
+        renderStudentsList(document.getElementById("teacherSearchInput").value);
+      });
+
+      // خروج الطالب
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        localStorage.removeItem("solar_student_id");
+        sessionStorage.removeItem("solar_teacher_logged_in");
+        location.reload();
+      });
+
+      // خروج المعلم
+      document.getElementById("teacherLogoutBtn").addEventListener("click", () => {
+        sessionStorage.removeItem("solar_teacher_logged_in");
+        location.reload();
+      });
+
+      window.addStudentPoints = async function(pointsToAdd) {
+        if (!currentStudentId) return;
+        const studentRef = doc(db, "students", currentStudentId);
+        await updateDoc(studentRef, {
+          points: increment(pointsToAdd)
+        });
+        const currentDisplay = parseInt(document.getElementById("displayStudentPoints").textContent) || 0;
+        document.getElementById("displayStudentPoints").textContent = currentDisplay + pointsToAdd;
+      };
+
+      window.getAllStudentsFromCloud = async function() {
+        const querySnapshot = await getDocs(collection(db, "students"));
+        const studentsList = [];
+        querySnapshot.forEach((docSnap) => {
+          studentsList.push({ id: docSnap.id, ...docSnap.data() });
+        });
+        studentsList.sort((a, b) => (b.points || 0) - (a.points || 0));
+        return studentsList;
+      };
+
+      // --- منطق لوحة تحكم المعلم والمراكز ---
+      const teacherModal = document.getElementById("teacherModal");
+      const resultsContainer = document.getElementById("teacherResultsList");
+      const statusMsg = document.getElementById("teacherStatusMsg");
+
+      async function renderStudentsList(filterText = "") {
+        statusMsg.textContent = "جاري تحميل بيانات الطلاب وترتيب المراكز...";
+        resultsContainer.innerHTML = "";
+
+        try {
+          const allStudents = await window.getAllStudentsFromCloud();
+
+          const rankedStudents = allStudents.map((st, idx) => ({
+            ...st,
+            rank: idx + 1
+          }));
+
+          const q = filterText.trim().toLowerCase();
+          const filtered = rankedStudents.filter((st) => {
+            const nameMatch = (st.name || "").toLowerCase().includes(q);
+            const classMatch = (st.studentClass || "").toLowerCase().includes(q);
+            return !q || nameMatch || classMatch;
+          });
+
+          if (filtered.length === 0) {
+            statusMsg.textContent = "لا يوجد طلاب مطابقون للبحث.";
+            return;
+          }
+
+          statusMsg.textContent = `إجمالي الطلاب المسجلين: ${allStudents.length} | الظاهرون: ${filtered.length}`;
+
+          filtered.forEach((st) => {
+            let currentPts = st.points || 0;
+            const hasTakeaway = Boolean((st.studentTakeaway || "").trim());
+            const tasksEntries = Object.entries(st.studentTasks || {});
+            const tasksCount = tasksEntries.length;
+            const card = document.createElement("div");
+
+            let borderStyle = "1px solid #e2e8f0";
+            let bgStyle = "#f8fafc";
+            if (st.rank === 1) {
+              borderStyle = "2px solid #f59e0b";
+              bgStyle = "#fffbeb";
+            } else if (st.rank === 2) {
+              borderStyle = "2px solid #94a3b8";
+              bgStyle = "#f8fafc";
+            } else if (st.rank === 3) {
+              borderStyle = "2px solid #fb923c";
+              bgStyle = "#fff7ed";
+            }
+
+            card.style.cssText = `border: ${borderStyle}; border-radius: 12px; padding: 12px; margin-bottom: 10px; background: ${bgStyle}; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px;`;
+
+            card.innerHTML = `
+              <div>
+                <div style="margin-bottom: 4px;">${getRankBadge(st.rank)}</div>
+                <strong>${escapeHtml(st.name)}</strong> — <span style="color: #475569;">الفصل: ${escapeHtml(st.studentClass)}</span><br>
+                <span style="color: #d97706; font-weight: bold;">⭐ النقاط الحالية: <span class="pts-val">${currentPts}</span></span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                <button type="button" class="view-takeaway-btn" style="background: ${hasTakeaway ? "#0284c7" : "#64748b"}; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-weight: bold;">
+                  📖 استفادة الطالب${hasTakeaway ? " (جديد)" : ""}
+                </button>
+                <button type="button" class="view-tasks-btn" style="background: ${tasksCount > 0 ? "#4f46e5" : "#64748b"}; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-weight: bold;">
+                  🎯 مهام الطالب (${tasksCount})
+                </button>
+                <button class="delta-btn" data-delta="10" style="background: #16a34a; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-weight: bold;">+10</button>
+                <button class="delta-btn" data-delta="5" style="background: #22c55e; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-weight: bold;">+5</button>
+                <button class="delta-btn" data-delta="-5" style="background: #f97316; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-weight: bold;">-5</button>
+                <button class="delta-btn" data-delta="-10" style="background: #dc2626; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-weight: bold;">-10</button>
+                <input type="number" class="custom-delta" placeholder="رقم" style="width: 60px; padding: 5px; border: 1px solid #cbd5e1; border-radius: 6px;">
+                <button class="apply-custom-btn" style="background: #334155; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer;">تطبيق</button>
+                <button class="kick-student-btn" style="background: #991b1b; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-weight: bold;">إخراج</button>
+              </div>
+            `;
+
+            const takeawayBox = document.createElement("div");
+            takeawayBox.style.cssText = "display: none; width: 100%; margin-top: 8px; padding: 10px 12px; background: #ffffff; border: 1px dashed #94a3b8; border-radius: 8px; font-size: 13px;";
+            const cleanTakeaway = (st.studentTakeaway || "").trim();
+            takeawayBox.innerHTML = cleanTakeaway
+              ? `<div style="font-weight: bold; color: #0f172a; margin-bottom: 4px;">📝 استفادة الطالب:</div><div style="color: #334155; white-space: pre-wrap; line-height: 1.6;">${escapeHtml(cleanTakeaway)}</div>`
+              : `<span style="color: #64748b;">لم يرسل الطالب استفادته بعد.</span>`;
+            card.appendChild(takeawayBox);
+
+            const tasksBox = document.createElement("div");
+            tasksBox.style.cssText = "display: none; width: 100%; margin-top: 8px; padding: 10px 12px; background: #ffffff; border: 1px dashed #6366f1; border-radius: 8px; font-size: 13px;";
+            tasksBox.innerHTML = tasksCount > 0
+              ? `<div style="font-weight: bold; color: #312e81; margin-bottom: 6px;">🎯 حلول المهام المرسلة (${tasksCount}):</div>` +
+                tasksEntries.map(([k, item]) => `
+                  <div style="padding: 8px; background: #f8fafc; border-radius: 6px; margin-bottom: 6px;">
+                    <div style="font-weight: bold; color: #0f172a; margin-bottom: 2px;">${escapeHtml(item.title || (TASKS_CATALOG[k] && TASKS_CATALOG[k].title) || k)}</div>
+                    <div style="color: #334155; white-space: pre-wrap; line-height: 1.5;">${escapeHtml(item.answer || "")}</div>
+                  </div>
+                `).join("")
+              : `<span style="color: #64748b;">لم يرسل الطالب حلول مهام بعد.</span>`;
+            card.appendChild(tasksBox);
+
+            card.querySelector(".view-takeaway-btn").addEventListener("click", () => {
+              takeawayBox.style.display = takeawayBox.style.display === "none" ? "block" : "none";
+            });
+
+            card.querySelector(".view-tasks-btn").addEventListener("click", () => {
+              tasksBox.style.display = tasksBox.style.display === "none" ? "block" : "none";
+            });
+
+            async function applyDelta(delta) {
+              if (isNaN(delta) || delta === 0) return;
+              const studentRef = doc(db, "students", st.id);
+              await updateDoc(studentRef, {
+                points: increment(delta)
+              });
+              currentPts += delta;
+
+              if (st.id === currentStudentId) {
+                document.getElementById("displayStudentPoints").textContent = currentPts;
+              }
+              await renderStudentsList(document.getElementById("teacherSearchInput").value);
+              statusMsg.textContent = `تم تحديث نقاط (${st.name}) بمقدار (${delta > 0 ? "+" + delta : delta}) وتحديث المراكز.`;
+            }
+
+            card.querySelectorAll(".delta-btn").forEach((btn) => {
+              btn.addEventListener("click", () => {
+                applyDelta(parseInt(btn.dataset.delta, 10));
+              });
+            });
+
+            card.querySelector(".apply-custom-btn").addEventListener("click", () => {
+              const inputEl = card.querySelector(".custom-delta");
+              const val = parseInt(inputEl.value, 10);
+              applyDelta(val);
+              inputEl.value = "";
+            });
+
+            card.querySelector(".kick-student-btn").addEventListener("click", async () => {
+              const ok = confirm(`هل أنت متأكد من إخراج الطالب (${st.name}) من النظام؟`);
+              if (!ok) return;
+
+              try {
+                await deleteDoc(doc(db, "students", st.id));
+                await renderStudentsList(document.getElementById("teacherSearchInput").value);
+                statusMsg.textContent = `تم إخراج الطالب (${st.name}) وتحديث المراكز بنجاح.`;
+              } catch (err) {
+                alert("حدث خطأ أثناء إخراج الطالب: " + err.message);
+              }
+            });
+
+            resultsContainer.appendChild(card);
+          });
+        } catch (err) {
+          console.error(err);
+          statusMsg.textContent = "حدث خطأ أثناء تحميل الطلاب: " + err.message;
+        }
+      }
+
+      document.getElementById("teacherAddStudentBtn").addEventListener("click", async () => {
+        const nameInput = document.getElementById("newStudentNameTeacher");
+        const classInput = document.getElementById("newStudentClassTeacher");
+        const name = nameInput.value.trim().replace(/\s+/g, " ");
+        const studentClass = classInput.value.trim().replace(/\s+/g, " ");
+
+        if (!name || !studentClass) {
+          alert("من فضلك اكتب اسم الطالب والفصل أولاً.");
+          return;
+        }
+
+        if (!isTripleName(name)) {
+          alert("يجب إدخال اسم الطالب ثلاثياً (3 كلمات على الأقل).");
+          return;
+        }
+
+        const studentId = createStudentId(name, studentClass);
+
+        try {
+          statusMsg.textContent = "جاري إدخال الطالب...";
+          await setDoc(doc(db, "students", studentId), {
+            name: name,
+            studentClass: studentClass,
+            points: 0,
+            createdAt: new Date().toISOString()
+          }, { merge: true });
+
+          nameInput.value = "";
+          classInput.value = "";
+          await renderStudentsList(document.getElementById("teacherSearchInput").value);
+          statusMsg.textContent = `تم إدخال الطالب (${name}) وتحديث المراكز بنجاح!`;
+        } catch (err) {
+          alert("حدث خطأ أثناء إدخال الطالب: " + err.message);
+        }
+      });
+
+      document.getElementById("openTeacherBtn").addEventListener("click", () => {
+        if (sessionStorage.getItem("solar_teacher_logged_in") !== "true") {
+          const pass = prompt("أدخل كلمة سر المعلم:");
+          if (pass === null) return;
+          if (pass !== TEACHER_PASSCODE) {
+            alert("كلمة السر غير صحيحة.");
+            return;
+          }
+          sessionStorage.setItem("solar_teacher_logged_in", "true");
+        }
+        teacherModal.style.display = "flex";
+        renderStudentsList(document.getElementById("teacherSearchInput").value);
+      });
+
+      document.getElementById("closeTeacherBtn").addEventListener("click", () => {
+        teacherModal.style.display = "none";
+      });
+
+      document.getElementById("teacherSearchBtn").addEventListener("click", () => {
+        renderStudentsList(document.getElementById("teacherSearchInput").value);
+      });
+
+      document.getElementById("teacherSearchInput").addEventListener("input", (e) => {
+        renderStudentsList(e.target.value);
+      });
+
+      document.getElementById("teacherRefreshBtn").addEventListener("click", () => {
+        document.getElementById("teacherSearchInput").value = "";
+        renderStudentsList("");
+      });
+    </script>
+</body>
+</html>

@@ -1,0 +1,452 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background-color: #07090d;
+  background-image: radial-gradient(ellipse 65% 32% at 50% 0%, rgba(245, 166, 35, 0.14), transparent 75%);
+  color: #f3f5f8;
+  min-height: 100vh;
+  padding: 28px 20px 48px;
+  line-height: 1.65;
+  direction: rtl;
+
+  /* تقسيم الشبكة الرئيسية ليطابق الصورة تماماً بدون تعديل الـ HTML */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+/* الهيدر العلوي يمتد على العمودين */
+header {
+  grid-column: 1 / -1;
+  background: linear-gradient(180deg, #151926 0%, #10141f 100%);
+  border: 1px solid rgba(245, 166, 35, 0.16);
+  border-radius: 18px;
+  padding: 34px 24px 30px;
+  text-align: center;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55);
+}
+
+header h1 {
+  font-size: clamp(1.85rem, 3.6vw, 2.75rem);
+  font-weight: 900;
+  color: #ffb838;
+  text-shadow: 0 0 24px rgba(245, 166, 35, 0.28);
+  margin-bottom: 10px;
+}
+
+header p {
+  color: #9aa3b2;
+  font-size: clamp(0.95rem, 1.5vw, 1.12rem);
+  font-weight: 500;
+}
+
+/* البطاقات الأساسية */
+section.card {
+  background: #111521;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* 1. بطاقة لماذا الطاقة الشمسية (الأولى بعد الهيدر) - باللون الفيروزي */
+header + section.card {
+  border: 1px solid rgba(24, 184, 154, 0.55);
+  box-shadow: 0 0 0 1px rgba(24, 184, 154, 0.08), 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+header + section.card h2 {
+  color: #18b89a;
+  font-size: clamp(1.2rem, 1.9vw, 1.48rem);
+  font-weight: 800;
+}
+
+/* 2. بطاقة أضرار الطاقة الأحفورية (.warning) - باللون الأحمر المرجاني */
+section.card.warning {
+  border: 1px solid rgba(255, 77, 109, 0.55);
+  box-shadow: 0 0 0 1px rgba(255, 77, 109, 0.08), 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+section.card.warning h2 {
+  color: #ff4d6d;
+  font-size: clamp(1.2rem, 1.9vw, 1.48rem);
+  font-weight: 800;
+}
+
+/* القوائم والعناصر الداخلية */
+section.card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+section.card ul li {
+  background: #171c2b;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 15px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #f3f5f8;
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+/* رمز النجمة الفيروزية لبطاقة الطاقة الشمسية */
+header + section.card ul li::before {
+  content: "✦";
+  color: #18b89a;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  flex-shrink: 0;
+}
+
+header + section.card ul li:hover {
+  transform: translateY(-2px);
+  border-color: rgba(24, 184, 154, 0.35);
+  background: #1b2234;
+}
+
+/* رمز المثلث الأحمر لبطاقة الأضرار */
+section.card.warning ul li::before {
+  content: "▲";
+  color: #ff4d6d;
+  font-size: 0.85rem;
+  line-height: 1.85;
+  flex-shrink: 0;
+}
+
+section.card.warning ul li:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 77, 109, 0.35);
+  background: #1d1b2c;
+}
+
+/* 3. بطاقة كيف تعمل ألواح الطاقة الشمسية (الثالثة) - تمتد بعرض الصفحة وبإطار ذهبي */
+section.card.warning + section.card {
+  grid-column: 1 / -1;
+  border: 1px solid rgba(245, 166, 35, 0.42);
+  padding: 26px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+
+  /* ترتيب العنوان والنص والزرار داخل نفس البطاقة ليطابق الصورة */
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 18px 20px;
+}
+
+section.card.warning + section.card > h2 {
+  grid-column: 1 / -1;
+  color: #ffb838;
+  font-size: clamp(1.2rem, 1.9vw, 1.45rem);
+  font-weight: 800;
+}
+
+section.card.warning + section.card > p {
+  background: #171c2b;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 18px 20px;
+  color: #cfd6e2;
+  font-size: 0.98rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* زرار عرض الشرح التفصيلي */
+.toggle-btn {
+  background: linear-gradient(180deg, #ffb838 0%, #f09c14 100%);
+  color: #111318;
+  border: none;
+  border-radius: 10px;
+  padding: 13px 24px;
+  font-family: 'Cairo', sans-serif;
+  font-size: 0.96rem;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(245, 166, 35, 0.28);
+  transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
+}
+
+.toggle-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+  box-shadow: 0 6px 20px rgba(245, 166, 35, 0.4);
+}
+
+/* منطقة الشرح التفصيلي المخفية */
+.hidden-text {
+  display: none;
+  grid-column: 1 / -1;
+  margin-top: 4px;
+  counter-reset: step-counter;
+}
+
+/* تحويل الفقرات الداخلية إلى بطاقات خطوات مرقمة (01, 02...) عند الإظهار */
+.hidden-text[style*="block"] {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.hidden-text p {
+  background: #171c2b;
+  border: 1px solid rgba(245, 166, 35, 0.18);
+  border-radius: 13px;
+  padding: 15px 18px;
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: #f3f5f8;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  counter-increment: step-counter;
+}
+
+.hidden-text p::before {
+  content: counter(step-counter, decimal-leading-zero);
+  background: rgba(245, 166, 35, 0.16);
+  border: 1px solid rgba(245, 166, 35, 0.35);
+  color: #ffb838;
+  font-weight: 800;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  padding: 5px 10px;
+  flex-shrink: 0;
+}
+
+/* 4. بطاقة حاسبة انبعاثات الكربون (.carbon-box) بنفس الثيم الداكن */
+section.card.carbon-box {
+  grid-column: 1 / -1;
+  border: 1px solid rgba(24, 184, 154, 0.35);
+  background: #111521;
+}
+
+section.card.carbon-box h2 {
+  color: #18b89a;
+  font-size: clamp(1.2rem, 1.9vw, 1.45rem);
+  font-weight: 800;
+}
+
+section.card.carbon-box > p {
+  color: #9aa3b2;
+  font-size: 0.96rem;
+}
+
+.calc-input-group {
+  background: #171c2b;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.calc-input-group label {
+  font-weight: 700;
+  color: #f3f5f8;
+}
+
+.calc-input-group input {
+ background: #0d111a;
+ border: 1px solid rgba(24, 184, 154, 0.45);
+ color: #ffb838;
+ font-family: 'cairo', sans-serif;
+ font-size: 1.05rem;
+ font-weight: 800;
+ padding: 8px 14px;
+ border-radius: 8px;
+ width: 130px;
+ outline: none;
+}
+
+.calc-input-group input:focus {
+ border-color: #18b89a;
+ box-shadow: 0 0 0 3px rgba(24, 184, 154, 0.15);
+}
+
+.calc-results {
+ display: grid;
+ grid-template-columns: repeat(2, minmax(0, 1fr));
+ gap: 14px;
+}
+.result-item {
+  background: #171c2b;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.result-item span {
+  color: #9aa3b2;
+  font-weight: 600;
+}
+
+.result-item strong {
+  color: #ff4d6d;
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.eco-note {
+  background: rgba(24, 184, 154, 0.1);
+  border: 1px solid rgba(24, 184, 154, 0.25);
+  color: #18b89a !important;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* شريط الطالب وزر لوحة المعلم ليتماشى مع الشبكة */
+#studentBar {
+  grid-column: 1 / -1;
+  order: -1;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body > div:has(#openTeacherBtn) {
+  grid-column: 1 / -1;
+  margin: 6px 0 !important;
+}
+
+#openTeacherBtn {
+  font-family: 'Cairo', sans-serif;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+#openTeacherBtn:hover {
+  background: #283548 !important;
+  border-color: #ffb838 !important;
+}
+
+/* التجاوب مع الشاشات الصغيرة */
+@media (max-width: 860px) {
+  body {
+    grid-template-columns: 1fr;
+  }
+
+  section.card.warning + section.card {
+    grid-template-columns: 1fr;
+  }
+
+  .hidden-text[style*="block"],
+  .calc-results {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
